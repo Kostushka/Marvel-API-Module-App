@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { API_KEY } from '../constants/api';
+import { API_KEY, API_URL } from '../constants/api';
 
 const instance = axios.create({
-    baseURL: 'https://gateway.marvel.com/v1/public/',
+    baseURL: API_URL,
     params: {
         apikey: API_KEY,
         limit: 100,
