@@ -26,6 +26,25 @@ body {
     scrollbar-width: thin;
 }
 
+:global(.btn) {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+:global(.img-contain) {
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+:global(.img-cover) {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
