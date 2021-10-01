@@ -6,12 +6,12 @@ import {
     URL_CHARACTERS,
     URL_COMICS,
 } from '../../constants/api';
+import Error from '../Error';
 import { getDataApi } from '../../utils/getDataApi';
 import classes from './Comics.css';
 
 class Comics {
-    async render() {
-        const data = await getDataApi(URL_COMICS);
+    renderComics(data) {
         let htmlContent = '';
 
         data.forEach(({ id, title, thumbnail: { path, extension } }) => {
@@ -37,6 +37,12 @@ class Comics {
 
         ROOT_INDEX.innerHTML = htmlWrapper;
     }
+
+    async render() {
+        const data = await getDataApi(URL_COMICS);
+        data ? this.renderComics(data) : Error();
+    }
+
     eventListener() {
         document.querySelectorAll('.comics__item').forEach((el) => {
             const uri = el.getAttribute('data-uri');
