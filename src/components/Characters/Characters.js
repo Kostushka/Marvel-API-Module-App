@@ -2,6 +2,8 @@ import { STANDARD_XLARGE } from '../../constants/api';
 import { ROOT_MODAL } from '../../constants/root';
 import { getDataApi } from '../../utils/getDataApi';
 import closeImgWhite from './img/close-white.svg';
+import Notification from '../Notification';
+
 import classes from './Characters.css';
 
 class Characters {
@@ -32,10 +34,9 @@ class Characters {
         `;
         ROOT_MODAL.innerHTML = htmlWrapper;
     }
-    renderNotification() {}
     async render(uri) {
         const data = await getDataApi(uri);
-        data.length ? this.renderContent(data) : this.renderNotification();
+        data.length ? this.renderContent(data) : Notification();
     }
 }
 
