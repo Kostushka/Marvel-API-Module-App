@@ -9,6 +9,7 @@ import {
 import Error from '../Error';
 import { getDataApi } from '../../utils/getDataApi';
 import classes from './Comics.css';
+import Characters from '../Characters';
 
 class Comics {
     renderComics(data) {
@@ -16,8 +17,7 @@ class Comics {
 
         data.forEach(({ id, title, thumbnail: { path, extension } }) => {
             if (path.lastIndexOf(IMAGE_NOT_AVAILABLE) === -1) {
-                const uri =
-                    API_URL + URL_COMICS + '/' + id + '/' + URL_CHARACTERS;
+                const uri = URL_COMICS + '/' + id + '/' + URL_CHARACTERS;
 
                 const imgSrc = path + '/' + STANDARD_XLARGE + '.' + extension;
                 htmlContent += `
@@ -47,7 +47,7 @@ class Comics {
         document.querySelectorAll('.comics__item').forEach((el) => {
             const uri = el.getAttribute('data-uri');
             el.addEventListener('click', () => {
-                console.log(uri);
+                Characters.render(uri);
             });
         });
     }
